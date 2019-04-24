@@ -20,7 +20,7 @@ function postTodo(event) {
     event.preventDefault();
 
     const newTodo = {
-        text: "Profit",
+        text: document.querySelector('#new-todo').value,
         completed: false
     };
     
@@ -34,10 +34,11 @@ function postTodo(event) {
 }
 
 function updateThirdTodo(event) {
-    const updatedTodo = {
-        text: '????',
-        completed: true
-    };
+    const index = JSON.parse()
+    // const updatedTodo = {
+    //     text: '????',
+    //     completed: true
+    // };
     const jsonnedTodo = JSON.stringify(updatedTodo);
     
     const xhr = new XMLHttpRequest();
@@ -48,5 +49,26 @@ function updateThirdTodo(event) {
 }
 
 function handleData(event) {
+    cleanDisplay();
     console.log(event.target.responseText);
+    const listArray = JSON.parse(event.target.responseText);
+    
+    for(let i = 0; i < listArray.length; i++){
+        listBuild(listArray[i]);
+    }
+}
+
+function listBuild(item){
+    const newLine = document.createElement('li');
+        newLine.innerText = item.text;
+    const list = document.querySelector('#list');
+
+    list.appendChild(newLine)
+}
+
+function cleanDisplay(){
+    const list = document.querySelector('#list');
+    while(list.hasChildNodes() === true){
+        list.removeChild(list.firstChild);
+    }
 }
