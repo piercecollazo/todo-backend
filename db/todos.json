@@ -12,11 +12,11 @@
     },
     {
       "text": "????",
-      "completed": true,
+      "completed": false,
       "id": 3
     },
     {
-      "text": "test addition",
+      "text": "test #1",
       "completed": false,
       "id": 4
     },
